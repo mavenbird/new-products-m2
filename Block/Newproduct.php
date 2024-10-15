@@ -87,6 +87,11 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
     protected $compareHelper;
 
     /**
+     * @var bool
+     */
+    protected $dots;
+
+    /**
      * @param \Magento\Catalog\Block\Product\Context $context
      * @param \Magento\Framework\App\ResourceConnection $resource
      * @param \Magento\Framework\Url\Helper\Data $urlHelper
@@ -230,6 +235,11 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
         $this->setAutoscroll((bool)$this->_sliderConfig['autoscroll']);
         //$this->setPagination((bool)$this->_sliderConfig['pagination']);
         $this->setNavarrow((bool)$this->_sliderConfig['navarrow']);
+        if (isset($this->_sliderConfig['dots'])) {
+            $this->setDots((bool)$this->_sliderConfig['dots']);
+        } else {
+            $this->setDots(false); // Or set a default value
+        }
     }
     
     /**
@@ -399,9 +409,6 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
         
         $total_limit = $this->getNoOfProduct();
         $product_ids = array_slice($product_ids, 0, $total_limit);
-        // print_r($total_limit);
-        // print_r($product_ids);
-       //for limit the collection to solve last pagination number of items issue
         
         $storeId=$this->_storeManager->getStore()->getId();
         /** @var $collection \Magento\Catalog\Model\ResourceModel\Product\Collection */
@@ -418,9 +425,6 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
         } else {
             $collection->setPageSize($this->getNoOfProduct());
         }
-        // echo $this->getProductsPerPage();
-        //    print_r($collection->getData());exit;
-        //Display out of stock products
         if (!$this->getOutOfStock()) {
             $this->stockHelper->addInStockFilterToCollection($collection);
         }
@@ -557,5 +561,26 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
     public function getCompareHelper()
     {
         return $this->compareHelper;
+    }
+
+    /**
+     * GetDot
+     *
+     * @return void
+     */
+    public function getDots()
+    {
+        return $this->dots;
+    }
+
+    /**
+     * SetDot
+     *
+     * @param [type] $dots
+     * @return void
+     */
+    public function setDots($dots)
+    {
+        $this->dots = $dots;
     }
 }
