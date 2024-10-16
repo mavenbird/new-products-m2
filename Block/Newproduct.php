@@ -565,19 +565,19 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
         return $this->compareHelper;
     }
 
-    // /**
-    //  * Get Dots
-    //  */
-    // public function getDots()
-    // {
-    //     return $this->dots;
-    // }
+    /**
+     * Get Dots
+     */
+    public function getDots()
+    {
+        return $this->dots;
+    }
 
-    // /**
-    //  * Set Dots
-    //  */
-    // public function setDots($dots)
-    // {
-    //     $this->dots = $dots;
-    // }
+    /**
+     * Set Dots
+     */
+    public function setDots($dots)
+    {
+        $this->dots = $dots;
+    }
 }
