@@ -92,6 +92,8 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
     protected $dots;
 
     /**
+     * Construct
+     *
      * @param \Magento\Catalog\Block\Product\Context $context
      * @param \Magento\Framework\App\ResourceConnection $resource
      * @param \Magento\Framework\Url\Helper\Data $urlHelper
@@ -102,7 +104,7 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
      * @param \Magento\Catalog\Helper\Output $outputHelper
      * @param \Magento\Catalog\Helper\Image $image
      * @param \Magento\Wishlist\Helper\Data $dataHelper
-     * @param \Magento\Catalog\Helper\Compare $compareHelper
+     * @param \Magento\Catalog\Helper\Product\Compare $compareHelper
      * @param array $data
      */
     public function __construct(
@@ -196,7 +198,6 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
         
         //slider Settings
         $this->setAutoscroll((bool)$this->getWdAutoscroll());
-        //$this->setPagination((bool)$this->getWdPagination());
         $this->setNavarrow((bool)$this->getWdNavarrow());
     }
     
@@ -233,7 +234,6 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
 
         //slider Settings
         $this->setAutoscroll((bool)$this->_sliderConfig['autoscroll']);
-        //$this->setPagination((bool)$this->_sliderConfig['pagination']);
         $this->setNavarrow((bool)$this->_sliderConfig['navarrow']);
         $this->setDots((bool)$this->_sliderConfig['dots']);
     }
@@ -405,9 +405,6 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
         
         $total_limit = $this->getNoOfProduct();
         $product_ids = array_slice($product_ids, 0, $total_limit);
-        // print_r($total_limit);
-        // print_r($product_ids);
-       //for limit the collection to solve last pagination number of items issue
         
         $storeId=$this->_storeManager->getStore()->getId();
         /** @var $collection \Magento\Catalog\Model\ResourceModel\Product\Collection */
@@ -424,14 +421,9 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
         } else {
             $collection->setPageSize($this->getNoOfProduct());
         }
-        // echo $this->getProductsPerPage();
-        //    print_r($collection->getData());exit;
-        //Display out of stock products
         if (!$this->getOutOfStock()) {
             $this->stockHelper->addInStockFilterToCollection($collection);
         }
-    
-        //Display By Category
         
         if ($this->getNewproduct()==2) {
             if ($this->getCategories()) {
@@ -444,7 +436,6 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
             }
         }
         
-        //Set Sort Order
         if ($this->getSortOrder()=='rand') {
             $collection->getSelect()->order('rand()');
         } else {
@@ -574,7 +565,10 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
     }
 
     /**
-     * Set Dots
+     * Dots
+     *
+     * @param [type] $dots
+     * @return void
      */
     public function setDots($dots)
     {

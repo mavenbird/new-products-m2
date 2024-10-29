@@ -24,8 +24,6 @@ use Magento\Backend\Block\Widget\Grid\Extended;
 
 class Productinfo extends Extended
 {
-
-   
     /**
      * @var $_coreRegistry
      */

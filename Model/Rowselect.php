@@ -23,7 +23,6 @@ namespace Mavenbird\Newproduct\Model;
 class Rowselect implements \Magento\Framework\Option\ArrayInterface
 {
 
-   
     /**
      * To option array
      */

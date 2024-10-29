@@ -21,8 +21,6 @@ namespace Mavenbird\Newproduct\Block\Adminhtml\Product\Edit;
 
 class Tabs extends \Magento\Backend\Block\Widget\Tabs
 {
-
-   
     /**
      * Contruct
      */

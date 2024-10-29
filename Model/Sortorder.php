@@ -22,7 +22,6 @@ namespace Mavenbird\Newproduct\Model;
 class Sortorder implements \Magento\Framework\Option\ArrayInterface
 {
 
-   
     /**
      * To option array
      */
