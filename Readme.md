@@ -45,8 +45,8 @@ Easy installation process with step-by-step instructions provided for hassle-fre
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 composer require Mavenbird/new-products-extension
 php bin/magento setup:upgrade
-php bin/magento setup:static-content:deploy
 php bin/magento setup:di:compile
+php bin/magento setup:static-content:deploy
 php bin/magento cache:clean
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -55,8 +55,8 @@ Run the following command in Magento 2 root folder for easy update -
 ~~~~~~~~~~~~~~~~~~~~~
 composer update Mavenbird/new-products-extension
 php bin/magento setup:upgrade
-php bin/magento setup:static-content:deploy
 php bin/magento setup:di:compile
+php bin/magento setup:static-content:deploy
 php bin/magento cache:clean
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -66,10 +66,14 @@ Customize shipping restriction settings with configurable templates and flexible
 **Example Configuration Screenshots:**
 ![Screenshot 1](./doc/images/1.png)
 ![Screenshot 2](./doc/images/2.png)
+![Screenshot 3](./doc/images/3.png)
+![Screenshot 4](./doc/images/4.png)
+![Screenshot 5](./doc/images/5.png)
+![Screenshot 6](./doc/images/6.png)
 
 ## Support:
 For installation, customization, or any queries, our dedicated support team is available.
-**Email: [support@mavenbird.com](support@mavenbird.com)** 
+**Email: [support@mavenbird.com](mailto:support@mavenbird.com)** 
 
 ## Get Started:
 Enhance your Magento 2 store with the New Products Extension to showcase new arrivals effectively. Utilize the extension's features to optimize product visibility and improve customer engagement.

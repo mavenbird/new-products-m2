@@ -23,7 +23,6 @@ namespace Mavenbird\Newproduct\Model;
 class Customcollection extends \Magento\Framework\Model\AbstractModel
 {
 
-   
     /**
      * Construct
      */

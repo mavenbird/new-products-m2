@@ -92,6 +92,8 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
     protected $dots;
 
     /**
+     * Construct
+     *
      * @param \Magento\Catalog\Block\Product\Context $context
      * @param \Magento\Framework\App\ResourceConnection $resource
      * @param \Magento\Framework\Url\Helper\Data $urlHelper
@@ -102,7 +104,7 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
      * @param \Magento\Catalog\Helper\Output $outputHelper
      * @param \Magento\Catalog\Helper\Image $image
      * @param \Magento\Wishlist\Helper\Data $dataHelper
-     * @param \Magento\Catalog\Helper\Compare $compareHelper
+     * @param \Magento\Catalog\Helper\Product\Compare $compareHelper
      * @param array $data
      */
     public function __construct(
@@ -196,7 +198,6 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
         
         //slider Settings
         $this->setAutoscroll((bool)$this->getWdAutoscroll());
-        //$this->setPagination((bool)$this->getWdPagination());
         $this->setNavarrow((bool)$this->getWdNavarrow());
     }
     
@@ -233,13 +234,8 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
 
         //slider Settings
         $this->setAutoscroll((bool)$this->_sliderConfig['autoscroll']);
-        //$this->setPagination((bool)$this->_sliderConfig['pagination']);
         $this->setNavarrow((bool)$this->_sliderConfig['navarrow']);
-        if (isset($this->_sliderConfig['dots'])) {
-            $this->setDots((bool)$this->_sliderConfig['dots']);
-        } else {
-            $this->setDots(false); // Or set a default value
-        }
+        $this->setDots((bool)$this->_sliderConfig['dots']);
     }
     
     /**
@@ -428,8 +424,6 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
         if (!$this->getOutOfStock()) {
             $this->stockHelper->addInStockFilterToCollection($collection);
         }
-    
-        //Display By Category
         
         if ($this->getNewproduct()==2) {
             if ($this->getCategories()) {
@@ -442,7 +436,6 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
             }
         }
         
-        //Set Sort Order
         if ($this->getSortOrder()=='rand') {
             $collection->getSelect()->order('rand()');
         } else {
@@ -564,9 +557,7 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
     }
 
     /**
-     * GetDot
-     *
-     * @return void
+     * Get Dots
      */
     public function getDots()
     {
@@ -574,7 +565,7 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
     }
 
     /**
-     * SetDot
+     * Dots
      *
      * @param [type] $dots
      * @return void

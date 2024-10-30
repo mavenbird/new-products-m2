@@ -27,7 +27,6 @@ use \Magento\Framework\App\Action\Action;
 class Index extends \Magento\Framework\App\Action\Action
 {
 
-   
     /**
      * @var XML_PATH_ENABLED
      */
