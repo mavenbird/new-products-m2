@@ -26,7 +26,7 @@
             <class>separator-top</class>
             <label>New Products</label>
             <tab>mavenbird</tab>
-            <resource>Mavenbird_Newproduct::product_config</resource>
+            <resource>Mavenbird_Newproduct::configuration</resource>
 
             <group id="code" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Default Package Code</label>

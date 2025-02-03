@@ -26,7 +26,7 @@
 
    <add id="Mavenbird_Newproduct::Heading" title="New Products" module="Mavenbird_Newproduct" sortOrder="20" parent="Magento_Backend::mbmenu" resource="Mavenbird_Newproduct::Heading" />
    <add id="Mavenbird_Newproduct::configuration" title="Configuration" module="Mavenbird_Newproduct" sortOrder="180" parent="Mavenbird_Newproduct::Heading" action="adminhtml/system_config/edit/section/newproduct" resource="Mavenbird_Newproduct::configuration"/>
-   <add id="Mavenbird_Newproduct::grid" title="Add New Products"  action="newproduct/manage" module="Mavenbird_Newproduct" sortOrder="40" parent="Mavenbird_Newproduct::Heading" resource="Mavenbird_Newproduct::newproduct"/>
+   <add id="Mavenbird_Newproduct::grid" title="Add New Products"  action="newproduct/manage" module="Mavenbird_Newproduct" sortOrder="40" parent="Mavenbird_Newproduct::Heading" resource="Mavenbird_Newproduct::grid_catalog"/>
     
  </menu>
 </config>

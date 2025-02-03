@@ -21,9 +21,16 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::mbmenu">
+                    <resource id="Mavenbird_Newproduct::Heading" title="New Products" sortOrder="20">
+                        <resource id="Mavenbird_Newproduct::configuration" title="Configuration" sortOrder="20"/>
+                        <resource id="Mavenbird_Newproduct::grid" title="Add New Products" sortOrder="20"/>
+                    </resource>
+                </resource>
                 <resource id="Magento_Catalog::catalog">
                 <resource id="Magento_Catalog::catalog_inventory">                
-                       <resource id="Mavenbird_Newproduct::newproduct" title="Mavenbird New Products" sortOrder="20" />            
+                       <resource id="Mavenbird_Newproduct::newproduct" title="Mavenbird New Products" sortOrder="20" />
+                       <resource id="Mavenbird_Newproduct::grid_catalog" title="Add New Products" sortOrder="20" />      
                 </resource>
                 </resource>                    
                 <resource id="Magento_Backend::stores">
