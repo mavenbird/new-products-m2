@@ -51,7 +51,7 @@
                 <label>Settings</label>
 
                 <field id="enable" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Enabled</label>
+                    <label>Enabled Extension</label>
                     <comment> Select Yes for display new products on frontend.</comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
