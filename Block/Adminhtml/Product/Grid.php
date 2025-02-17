@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Mavenbird Technologies Private Limited
  *
@@ -17,6 +18,7 @@
  * @copyright  Copyright (c) 2018-2024 Mavenbird Technologies Private Limited ( http://mavenbird.com )
  * @license    http://mavenbird.com/Mavenbird-Module-License.txt
  */
+
 namespace  Mavenbird\Newproduct\Block\Adminhtml\Product;
 
 use Magento\Store\Model\Store;
@@ -57,7 +59,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      * @var $_customcollection
      */
     protected $_customcollection;
-    
+
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Backend\Helper\Data $backendHelper
@@ -92,10 +94,10 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->_status = $status;
         $this->_visibility = $visibility;
         $this->_websiteFactory = $websiteFactory;
-        
+
         parent::__construct($context, $backendHelper, $data);
     }
-    
+
     /**
      * Construct
      */
@@ -108,7 +110,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->setSaveParametersInSession(true);
         $this->setUseAjax(true);
     }
-    
+
     /**
      * Get Store
      */
@@ -117,44 +119,44 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $storeId = (int)$this->getRequest()->getParam('store', 0);
         return $this->_storeManager->getStore($storeId);
     }
-    
+
     /**
      * Prepare Collection
      */
     protected function _prepareCollection()
     {
         $storeId = (int)$this->getRequest()->getParam('store', 0);
-        $customcollection=$this->_customcollection->getData();
+        $customcollection = $this->_customcollection->getData();
         foreach ($customcollection as $custom) {
-            if (($custom['store_id']==$storeId) && ($storeId!=0)) {
-                $entityId_str=$custom['entity_id'];
+            if (($custom['store_id'] == $storeId) && ($storeId != 0)) {
+                $entityId_str = $custom['entity_id'];
                 if (empty($entityId_str)) {
-                    $entityId_str=0;
+                    $entityId_str = 0;
                 }
-                $entity= explode(",", $entityId_str);
+                $entity = explode(",", $entityId_str);
             } else {
-                $entity=0;
+                $entity = 0;
             }
-            if ($storeId==0) {
-                $entityId_str[]=$custom['entity_id'];
+            if ($storeId == 0) {
+                $entityId_str[] = $custom['entity_id'];
             }
-             $store_ids[]=$custom['store_id'];
+            $store_ids[] = $custom['store_id'];
         }
-        
+
         if ($customcollection) {
-            if ($storeId==0) {
-                $new_entityId= implode(",", $entityId_str);
-                $new= explode(",", $new_entityId);
-                $entity=array_unique($new);
+            if ($storeId == 0) {
+                $new_entityId = implode(",", $entityId_str);
+                $new = explode(",", $new_entityId);
+                $entity = array_unique($new);
             } elseif (!in_array($storeId, $store_ids)) {
-                $entity=0;
+                $entity = 0;
             } else {
-                $entity= explode(",", $entityId_str);
+                $entity = explode(",", $entityId_str);
             }
         } else {
-            $entity=0;
+            $entity = 0;
         }
-        
+
         $store = $this->_getStore();
         $collection = $this->_productFactory->create()->getCollection()->addAttributeToSelect(
             'sku'
@@ -206,7 +208,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $collection->addAttributeToSelect('price');
         $collection->addFieldToFilter('entity_id', ['in' => $entity]);
         $this->setCollection($collection);
-        
+
         $this->getCollection()->addWebsiteNamesToResult();
         parent::_prepareCollection();
         return $this;
@@ -233,7 +235,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         }
         return parent::_addColumnFilterToCollection($column);
     }
-    
+
     /**
      * Prepare mass action
      */
@@ -244,11 +246,11 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->getMassactionBlock()->addItem(
             'display',
             [
-                        'label' => __('Delete'),
-                        'url' => $this->getUrl('newproduct/*/massdelete'),
-                        'confirm' => __('Are you sure want to delete new products?'),
-                        'selected'=>true
-                ]
+                'label' => __('Delete'),
+                'url' => $this->getUrl('newproduct/*/massdelete'),
+                'confirm' => __('Are you sure want to delete new products?'),
+                'selected' => true
+            ]
         );
         return $this;
     }
@@ -340,7 +342,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Status'),
                 'index' => 'status',
                 'type' => 'options',
-               'options' => $this->_status->getOptionArray()
+                'options' => $this->_status->getOptionArray()
             ]
         );
         if (!$this->_storeManager->isSingleStoreMode()) {
@@ -363,12 +365,16 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         }
         return parent::_prepareColumns();
     }
-    
+
     /**
      * Get row URL
      */
+    // public function getGridUrl()
+    // {
+    //     return $this->getUrl('newproduct/manage/index', ['_current' => true]);
+    // }
     public function getGridUrl()
     {
-        return $this->getUrl('newproduct/manage/index', ['_current' => true]);
+        return $this->getUrl('newproduct/manage/grid', ['_current' => true]);
     }
 }

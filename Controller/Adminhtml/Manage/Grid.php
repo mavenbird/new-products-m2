@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Mavenbird Technologies Private Limited
  *
@@ -17,6 +18,7 @@
  * @copyright  Copyright (c) 2018-2024 Mavenbird Technologies Private Limited ( http://mavenbird.com )
  * @license    http://mavenbird.com/Mavenbird-Module-License.txt
  */
+
 namespace  Mavenbird\Newproduct\Controller\Adminhtml\Manage;
 
 class Grid extends \Magento\Backend\App\Action
@@ -24,14 +26,25 @@ class Grid extends \Magento\Backend\App\Action
     /**
      * Execute
      */
+    // public function execute()
+    // {
+
+    //         $this->getResponse()->setBody(
+    //             $this->_view->getLayout()->
+    //             createBlock(Mavenbird\Newproduct\Block\Adminhtml\Product\Grid::class)->toHtml()
+    //         );
+    // }
+
     public function execute()
     {
-        
-            $this->getResponse()->setBody(
-                $this->_view->getLayout()->
-                createBlock(Mavenbird\Newproduct\Block\Adminhtml\Product\Grid::class)->toHtml()
-            );
+        $this->_view->loadLayout(false);
+        $this->getResponse()->setBody(
+            $this->_view->getLayout()
+                ->createBlock('Mavenbird\Newproduct\Block\Adminhtml\Product\Grid')
+                ->toHtml()
+        );
     }
+
 
     /**
      * Is Allowed
