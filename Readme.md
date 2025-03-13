@@ -69,7 +69,6 @@ Customize shipping restriction settings with configurable templates and flexible
 ![Screenshot 3](./doc/images/3.png)
 ![Screenshot 4](./doc/images/4.png)
 ![Screenshot 5](./doc/images/5.png)
-![Screenshot 6](./doc/images/6.png)
 
 ## Support:
 For installation, customization, or any queries, our dedicated support team is available.
