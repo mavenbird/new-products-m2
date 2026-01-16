@@ -206,36 +206,37 @@ class Newproduct extends \Magento\Catalog\Block\Product\AbstractProduct
      */
     public function setConfigValues()
     {
-        $this->_config=$this->getConfig();
-        $this->_sliderConfig=$this->getSliderconfig();
-        
-        $this->setEnabled((bool)$this->_config['enable']);
-        $this->setShowHeading((bool)$this->_config['show_heading']);
-        $this->setProductType($this->_config['product_type']);
-        $this->setDefaultNew($this->_config['default_new']);
-        $this->setAddDays($this->_config['add_days']);
-        $this->setHeading($this->_config['heading']);
-        $this->setNewproduct($this->_config['newproduct']);
-        $this->setCategories($this->_config['categories']);
-        $this->setSortBy($this->_config['sort_by']);
-        $this->setSortOrder($this->_config['sort_order']);
-        $this->setProductsPrice((bool)$this->_config['price']);
-        $this->setDescription((bool)$this->_config['description']);
-        $this->setAddToCart((bool)$this->_config['cart']);
-        $this->setAddToWishlist((bool)$this->_config['wishlist']);
-        $this->setAddToCompare((bool)$this->_config['compare']);
-        $this->setOutOfStock((bool)$this->_config['out_stock']);
-        $this->setAjaxscrollPage((bool)$this->_config['enable_ajaxscroll_page']);
-        //Template Settings
-        $this->setNoOfProduct((int)$this->_config['no_of_product']);
-        $this->setProductsPerRow((int)$this->_config['products_per_row']);
-        $this->setProductsPerPage($this->_config['per_page_value']);
-        $this->setShowSlider((bool)$this->_config['slider']);
+        // Ensure config values are arrays and use sensible defaults to avoid undefined index warnings
+        $this->_config = (array)$this->getConfig();
+        $this->_sliderConfig = (array)$this->getSliderconfig();
 
-        //slider Settings
-        $this->setAutoscroll((bool)$this->_sliderConfig['autoscroll']);
-        $this->setNavarrow((bool)$this->_sliderConfig['navarrow']);
-        $this->setDots((bool)$this->_sliderConfig['dots']);
+        $this->setEnabled((bool)($this->_config['enable'] ?? false));
+        $this->setShowHeading((bool)($this->_config['show_heading'] ?? false));
+        $this->setProductType($this->_config['product_type'] ?? 2);
+        $this->setDefaultNew($this->_config['default_new'] ?? 1);
+        $this->setAddDays($this->_config['add_days'] ?? 0);
+        $this->setHeading($this->_config['heading'] ?? '');
+        $this->setNewproduct($this->_config['newproduct'] ?? 0);
+        $this->setCategories($this->_config['categories'] ?? '');
+        $this->setSortBy($this->_config['sort_by'] ?? 'created_at');
+        $this->setSortOrder($this->_config['sort_order'] ?? 'desc');
+        $this->setProductsPrice((bool)($this->_config['price'] ?? false));
+        $this->setDescription((bool)($this->_config['description'] ?? false));
+        $this->setAddToCart((bool)($this->_config['cart'] ?? false));
+        $this->setAddToWishlist((bool)($this->_config['wishlist'] ?? false));
+        $this->setAddToCompare((bool)($this->_config['compare'] ?? false));
+        $this->setOutOfStock((bool)($this->_config['out_stock'] ?? false));
+        $this->setAjaxscrollPage((bool)($this->_config['enable_ajaxscroll_page'] ?? false));
+        // Template Settings
+        $this->setNoOfProduct((int)($this->_config['no_of_product'] ?? 10));
+        $this->setProductsPerRow((int)($this->_config['products_per_row'] ?? 4));
+        $this->setProductsPerPage($this->_config['per_page_value'] ?? 10);
+        $this->setShowSlider((bool)($this->_config['slider'] ?? false));
+
+        // slider Settings
+        $this->setAutoscroll((bool)($this->_sliderConfig['autoscroll'] ?? false));
+        $this->setNavarrow((bool)($this->_sliderConfig['navarrow'] ?? false));
+        $this->setDots((bool)($this->_sliderConfig['dots'] ?? false));
     }
     
     /**
